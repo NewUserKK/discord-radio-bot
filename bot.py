@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 
-import os
 import discord
-from discord.ext.commands import Bot, Context
-
 import logging
+import os
 
+from discord.ext.commands import Bot, Context
 from discord_client import DiscordClient
 
 DISCORD_PUBLIC_KEY = os.environ['DISCORD_PUBLIC_KEY']
@@ -48,6 +47,8 @@ async def presets(ctx: Context):
 async def ping(ctx: Context):
     await ctx.send('pong')
 
+
+logging.basicConfig(filename='std.log', level=logging.DEBUG)
 
 log_handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 bot.run(DISCORD_TOKEN, log_handler=log_handler, log_level=logging.DEBUG)
