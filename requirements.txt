@@ -1,0 +1,3 @@
+discord[voice]
+pynacl
+https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz
