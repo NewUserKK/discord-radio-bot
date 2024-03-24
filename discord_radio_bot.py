@@ -48,6 +48,12 @@ async def ping(ctx: Context):
     await ctx.send('pong')
 
 
+@bot.command(name='kill', desctiption='Kill bot')
+async def kill(ctx: Context):
+    import sys
+    sys.exit(0)
+
+
 logging.basicConfig(filename='std.log', level=logging.DEBUG)
 
 log_handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')

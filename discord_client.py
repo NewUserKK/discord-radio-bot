@@ -12,8 +12,9 @@ class RadioPreset:
     url: str
 
 _radio_presets_list = [
-    RadioPreset('шансон', 'https://chanson.hostingradio.ru:8041/chanson128.mp3?md5=X0T88ApvwQEy8XTCR--xhA&amp;e=1707603476'),
+    RadioPreset('шансон', 'https://chanson.hostingradio.ru:8041/chanson-uncensored256.mp3?md5=XFXVB3Hftic6XVx6bto2jg&e=1708185512'),
     RadioPreset('дача', 'http://vdfm.ru:8000/dacha?type=.mp3'),
+    RadioPreset('lofi', 'https://www.youtube.com/watch?v=jfKfPfyJRdk'),
 ]
 
 _radio_presets = { preset.name: preset for preset in _radio_presets_list }
@@ -25,15 +26,15 @@ class DiscordClient:
 
     async def play(self, ctx: Context, inp: str):
         logging.debug(f'receivied play with url {inp}')
-        source = ''
-        if 'youtube' in inp or 'youtu.be' in inp:
+        source = inp
+        
+        if source.lower() in _radio_presets:
+            logging.debug(f'found radio {source}')
+            source = _radio_presets[source].url
+
+        if 'youtube' in source or 'youtu.be' in source:
             logging.debug('it is youtube')
-            source = self._get_source_from_youtube(inp)
-        elif inp.lower() in _radio_presets:
-            logging.debug(f'found radio {inp}')
-            source = _radio_presets[inp].url
-        else:
-            source = inp
+            source = self._get_source_from_youtube(source)
 
         logging.debug(f'play source: {source}')
 
