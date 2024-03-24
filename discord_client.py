@@ -15,6 +15,7 @@ _radio_presets_list = [
     RadioPreset('шансон', 'https://chanson.hostingradio.ru:8041/chanson-uncensored256.mp3?md5=XFXVB3Hftic6XVx6bto2jg&e=1708185512'),
     RadioPreset('дача', 'http://vdfm.ru:8000/dacha?type=.mp3'),
     RadioPreset('lofi', 'https://www.youtube.com/watch?v=jfKfPfyJRdk'),
+    RadioPreset('кндр', 'https://listen7.myradio24.com/69366'),
 ]
 
 _radio_presets = { preset.name: preset for preset in _radio_presets_list }
